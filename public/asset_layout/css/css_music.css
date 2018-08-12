@@ -1,0 +1,146 @@
+/********************************	THANH TÌM KIẾM **********************/
+.container-4{
+  float:right;
+  overflow: hidden;
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.container-4 input#search{
+  width: 300px;
+  height: 40px;
+  background: #CCCCCC;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #333;
+  padding-left: 15px;
+  border-radius: 10px;
+}
+
+
+.container-4 button.icon{
+  border: none;
+  height: 40px;
+  width: 50px;
+  font-size: 10pt;
+
+}
+.container-4:hover button.icon, .container-4:active button.icon, .container-4:focus button.icon{
+    outline: none;
+    opacity: 1;
+    margin-left: -50px;
+ }
+ 
+  .container-4:hover button.icon:hover{
+    background: #066;
+  }
+
+/**********************************************/
+.dangnhap-dangki
+{
+	float:right;
+	margin:5px 10px;
+}
+	
+.dangnhap-dangki ul li
+{
+	float:left;
+	margin-left:30px;
+	list-style-type:none;
+}
+
+.dangnhap-dangki a
+{
+	text-decoration:none;
+	color:#000;
+}
+	
+.dangnhap-dangki a:hover
+{
+	color:#0F0;}
+
+/*************************	CONTENT LEFT - CONTENT RIGHT	**********************************/
+	
+.list-chude ul
+{
+	list-style-type:none;
+}
+/*---------------------------	RIGHT CONTENT	---------------------------*/	
+
+
+.nhac-hot ul li
+{
+	list-style-type:none;
+	border-bottom:1px solid #063;
+	margin-left:5px;
+}
+
+.album-hot ul li
+{
+	list-style-type:none;
+	border-bottom:1px solid #063;
+	margin-left:5px;
+}
+
+/*--------------------------- CSS3 ---------------------*/
+.list-chude img
+{
+-webkit-transform:scale(1); /*Webkit: Thu nhỏ kích thước ảnh còn 0.8 so với ảnh gốc*/
+-moz-transform:scale(0.8); /*Thu nhỏ đối với Mozilla*/
+-o-transform:scale(0.8); /*Thu nhỏ đối với Opera*/
+-webkit-transition-duration: 0.5s; /*Webkit: Thời gian phóng to, nhỏ ảnh*/
+-moz-transition-duration: 0.5s; /*Như trên*/
+-o-transition-duration: 0.5s; /*Như trên*/
+opacity: 0.8; /*Độ mờ của hình ảnh*/
+margin: 0 10px 5px 0; /*căn đều giữa ảnh*/
+}
+
+.list-chude img:hover
+{
+-webkit-transform:scale(1.03); /*Webkit: Tăng kích cỡ ảnh lên 1.1 lần*/
+-moz-transform:scale(1.1); 
+-o-transform:scale(1.1); 
+box-shadow:0px 0px 30px gray; /*Đổ bóng bằng CSS3*/
+-webkit-box-shadow:0px 0px 30px gray;
+-moz-box-shadow:0px 0px 30px gray; 
+opacity: 1; /*Độ mờ của hình ảnh*/
+}
+
+
+/**************************	CONTENT - THE LOAI************************************/
+.content-theloai-1 ul li
+{
+	list-style-type:none;
+	float:left;
+	margin-right:20px;
+	margin-left:20px;
+	margin-bottom:20px;
+	}
+
+.content-theloai-2 ul li
+{
+	list-style-type:none;
+	float:left;
+	margin-right:20px;
+	margin-left:20px;
+	}
+	
+/****************************************	FOOTER	*********************************************/
+.lienhe ul li
+{
+	list-style-type:none;
+}
+
+ul li a
+{
+	text-decoration:none;
+}
+
+
+.dieukhoan ul li
+{
+	list-style-type:none;
+}
+
+/******************************** TÌM KIẾM ************************************/
