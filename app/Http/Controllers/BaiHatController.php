@@ -6,27 +6,27 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\LoaiNhac;
+use App\BaiHat;
 
-class LoaiNhacController extends Controller
+class BaiHatController extends Controller
 {
     //
     public function getDanhSach()
     {
-    	// lay tat ca danh sach the loai bang 'all'
-    	$loainhac = LoaiNhac::all();
-    	return view('admin.loainhac.danhsach',['loainhac'=>$loainhac]);
+    	// lay tat ca danh sach bai hat bang 'all'
+    	$baihat = BaiHat::all();
+    	return view('admin.baihat.danhsach',['baihat'=>$baihat]);
     }
 
     public function getSua($id)
     {
-    	$loainhac = LoaiNhac::find($id);
-    	return view('admin.loainhac.sua',['loainhac'=>$loainhac]);
+    	$baihat = LoaiNhac::find($id);
+    	return view('admin.baihat.sua',['baihat'=>$baihat]);
     }
 
     public function postSua(Request $request,$id)
     {
-    	$loainhac = LoaiNhac::find($id);
+    	$baihat = BaiHat::find($id);
     	$this->validate($request,
     		[
     			'Ten'=>'required|unique:LoaiNhac,Ten|min:3|max:100'
@@ -37,14 +37,14 @@ class LoaiNhacController extends Controller
     			'Ten.min'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     			'Ten.max'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     		]);
-    	$loainhac->Ten = $request->Ten;
-    	$loainhac->save();
-    	return redirect('admin/loainhac/sua/'.$id)->with('thongbao','Sửa Thành Công');
+    	$baihat->Ten = $request->Ten;
+    	$baihat->save();
+    	return redirect('admin/baihat/sua/'.$id)->with('thongbao','Sửa Thành Công');
     }
 
     public function getThem()
     {
-    	return view('admin.loainhac.them');
+    	return view('admin.baihat.them');
     }
 
     public function postThem(Request $request)
@@ -59,18 +59,18 @@ class LoaiNhacController extends Controller
     			'Ten.max'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     		]);
 
-    	$loainhac = new LoaiNhac;
-    	$loainhac->Ten = $request->Ten;
-    	$loainhac->save();
+    	$baihat = new BaiHat;
+    	$baihat->Ten = $request->Ten;
+    	$baihat->save();
 
-    	return redirect('admin/loainhac/them')->with('thongbao','Đã Thêm Thành Công');
+    	return redirect('admin/baihat/them')->with('thongbao','Đã Thêm Thành Công');
     }
 
     public function getXoa($id)
     {
-    	$loainhac = LoaiNhac::find($id);
-    	$loainhac->delete();
+    	$baihat = BaiHat::find($id);
+    	$baihat->delete();
 
-    	return redirect('admin/loainhac/danhsach')->with('thongbao','Đã Xóa Thành Công');
+    	return redirect('admin/baihat/danhsach')->with('thongbao','Đã Xóa Thành Công');
     }
 }

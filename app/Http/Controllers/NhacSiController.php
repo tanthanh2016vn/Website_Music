@@ -6,30 +6,30 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\LoaiNhac;
+use App\NhacSi;
 
-class LoaiNhacController extends Controller
+class NhacSiController extends Controller
 {
     //
     public function getDanhSach()
     {
-    	// lay tat ca danh sach the loai bang 'all'
-    	$loainhac = LoaiNhac::all();
-    	return view('admin.loainhac.danhsach',['loainhac'=>$loainhac]);
+    	// lay tat ca danh sach bai hat bang 'all'
+    	$nhacsi = NhacSi::all();
+    	return view('admin.nhacsi.danhsach',['nhacsi'=>$nhacsi]);
     }
 
     public function getSua($id)
     {
-    	$loainhac = LoaiNhac::find($id);
-    	return view('admin.loainhac.sua',['loainhac'=>$loainhac]);
+    	$nhacsi = NhacSi::find($id);
+    	return view('admin.nhacsi.sua',['nhacsi'=>$nhacsi]);
     }
 
     public function postSua(Request $request,$id)
     {
-    	$loainhac = LoaiNhac::find($id);
+    	$nhacsi = NhacSi::find($id);
     	$this->validate($request,
     		[
-    			'Ten'=>'required|unique:LoaiNhac,Ten|min:3|max:100'
+    			'Ten'=>'required|unique:NhacSi,Ten|min:3|max:100'
     		],
     		[
     			'Ten.required'=>'Bạn chưa nhập loại nhạc',
@@ -37,14 +37,14 @@ class LoaiNhacController extends Controller
     			'Ten.min'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     			'Ten.max'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     		]);
-    	$loainhac->Ten = $request->Ten;
-    	$loainhac->save();
-    	return redirect('admin/loainhac/sua/'.$id)->with('thongbao','Sửa Thành Công');
+    	$nhacsi->Ten = $request->Ten;
+    	$nhacsi->save();
+    	return redirect('admin/nhacsi/sua/'.$id)->with('thongbao','Sửa Thành Công');
     }
 
     public function getThem()
     {
-    	return view('admin.loainhac.them');
+    	return view('admin.nhacsi.them');
     }
 
     public function postThem(Request $request)
@@ -59,18 +59,18 @@ class LoaiNhacController extends Controller
     			'Ten.max'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     		]);
 
-    	$loainhac = new LoaiNhac;
-    	$loainhac->Ten = $request->Ten;
-    	$loainhac->save();
+    	$nhacsi = new NhacSi;
+    	$nhacsi->Ten = $request->Ten;
+    	$nhacsi->save();
 
-    	return redirect('admin/loainhac/them')->with('thongbao','Đã Thêm Thành Công');
+    	return redirect('admin/nhacsi/them')->with('thongbao','Đã Thêm Thành Công');
     }
 
     public function getXoa($id)
     {
-    	$loainhac = LoaiNhac::find($id);
-    	$loainhac->delete();
+    	$nhacsi = nhacsi::find($id);
+    	$nhacsi->delete();
 
-    	return redirect('admin/loainhac/danhsach')->with('thongbao','Đã Xóa Thành Công');
+    	return redirect('admin/nhacsi/danhsach')->with('thongbao','Đã Xóa Thành Công');
     }
 }

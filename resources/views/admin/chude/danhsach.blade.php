@@ -5,22 +5,17 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Loại Nhạc
+                        <h1 class="page-header">Chủ Đề
                             <small>Danh Sách</small>
                         </h1>
                     </div>
-
-                    @if(session('thongbao'))
-                            <div class="alert alert-success">
-                                {{session('thongbao')}}
-                            </div>
-                        @endif
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Tên</th>
+                                <th>Hình Ảnh</th>
                                 <th>Ngày Tạo</th>
                                 <th>Ngày Cập Nhật</th>
                                 <th>Delete</th>
@@ -28,14 +23,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($loainhac as $ln)
+                            @foreach($chude as $cd)
                             <tr class="odd gradeX" align="center">
-                                <td>{{$ln->id}}</td>
-                                <td>{{$ln->Ten}}</td>
-                                <td>{{$ln->created_at}}</td>
-                                <td>{{$ln->update_at}}</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loainhac/xoa/{{$ln->id}}"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loainhac/sua/{{$ln->id}}">Edit</a></td>
+                                <td>{{$cd->id}}</td>
+                                <td>{{$cd->Ten}}</td>
+                                <td>{{$cd->HinhAnh}}</td>
+                                <td>{{$cd->created_at}}</td>
+                                <td>{{$cd->update_at}}</td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="admin/loainhac/xoa/{{$cd->id}}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="admin/loainhac/sua/{{$cd->id}}">Edit</a></td>
                             </tr>
                             @endforeach
                         </tbody>

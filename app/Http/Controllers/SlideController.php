@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\LoaiNhac;
+use App\Slide;
 
-class LoaiNhacController extends Controller
+class SlideController extends Controller
 {
     //
     public function getDanhSach()
     {
-    	// lay tat ca danh sach the loai bang 'all'
-    	$loainhac = LoaiNhac::all();
-    	return view('admin.loainhac.danhsach',['loainhac'=>$loainhac]);
+    	// lay tat ca danh sach bai hat bang 'all'
+    	$slide = Slide::all();
+    	return view('admin.slide.danhsach',['slide'=>$slide]);
     }
 
     public function getSua($id)

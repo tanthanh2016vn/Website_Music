@@ -6,30 +6,30 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\LoaiNhac;
+use App\ChuDe;
 
-class LoaiNhacController extends Controller
+class ChuDeController extends Controller
 {
     //
     public function getDanhSach()
     {
-    	// lay tat ca danh sach the loai bang 'all'
-    	$loainhac = LoaiNhac::all();
-    	return view('admin.loainhac.danhsach',['loainhac'=>$loainhac]);
+    	// lay tat ca danh sach bai hat bang 'all'
+    	$chude = ChuDe::all();
+    	return view('admin.chude.danhsach',['chude'=>$chude]);
     }
 
     public function getSua($id)
     {
-    	$loainhac = LoaiNhac::find($id);
-    	return view('admin.loainhac.sua',['loainhac'=>$loainhac]);
+    	$chude = ChuDe::find($id);
+    	return view('admin.chude.sua',['chude'=>$chude]);
     }
 
     public function postSua(Request $request,$id)
     {
-    	$loainhac = LoaiNhac::find($id);
+    	$chude = ChuDe::find($id);
     	$this->validate($request,
     		[
-    			'Ten'=>'required|unique:LoaiNhac,Ten|min:3|max:100'
+    			'Ten'=>'required|unique:ChuDe,Ten|min:3|max:100'
     		],
     		[
     			'Ten.required'=>'Bạn chưa nhập loại nhạc',
@@ -37,14 +37,14 @@ class LoaiNhacController extends Controller
     			'Ten.min'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     			'Ten.max'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     		]);
-    	$loainhac->Ten = $request->Ten;
-    	$loainhac->save();
-    	return redirect('admin/loainhac/sua/'.$id)->with('thongbao','Sửa Thành Công');
+    	$chude->Ten = $request->Ten;
+    	$chude->save();
+    	return redirect('admin/chude/sua/'.$id)->with('thongbao','Sửa Thành Công');
     }
 
     public function getThem()
     {
-    	return view('admin.loainhac.them');
+    	return view('admin.chude.them');
     }
 
     public function postThem(Request $request)
@@ -59,18 +59,18 @@ class LoaiNhacController extends Controller
     			'Ten.max'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     		]);
 
-    	$loainhac = new LoaiNhac;
-    	$loainhac->Ten = $request->Ten;
-    	$loainhac->save();
+    	$chude = new ChuDe;
+    	$chude->Ten = $request->Ten;
+    	$chude->save();
 
-    	return redirect('admin/loainhac/them')->with('thongbao','Đã Thêm Thành Công');
+    	return redirect('admin/chude/them')->with('thongbao','Đã Thêm Thành Công');
     }
 
     public function getXoa($id)
     {
-    	$loainhac = LoaiNhac::find($id);
-    	$loainhac->delete();
+    	$chude = ChuDe::find($id);
+    	$chude->delete();
 
-    	return redirect('admin/loainhac/danhsach')->with('thongbao','Đã Xóa Thành Công');
+    	return redirect('admin/chude/danhsach')->with('thongbao','Đã Xóa Thành Công');
     }
 }

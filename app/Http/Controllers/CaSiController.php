@@ -6,30 +6,30 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\LoaiNhac;
+use App\CaSi;
 
-class LoaiNhacController extends Controller
+class CaSiController extends Controller
 {
     //
     public function getDanhSach()
     {
-    	// lay tat ca danh sach the loai bang 'all'
-    	$loainhac = LoaiNhac::all();
-    	return view('admin.loainhac.danhsach',['loainhac'=>$loainhac]);
+    	// lay tat ca danh sach bai hat bang 'all'
+    	$casi = CaSi::all();
+    	return view('admin.casi.danhsach',['casi'=>$casi]);
     }
 
     public function getSua($id)
     {
-    	$loainhac = LoaiNhac::find($id);
-    	return view('admin.loainhac.sua',['loainhac'=>$loainhac]);
+    	$casi = CaSi::find($id);
+    	return view('admin.casi.sua',['casi'=>$casi]);
     }
 
     public function postSua(Request $request,$id)
     {
-    	$loainhac = LoaiNhac::find($id);
+    	$casi = CaSi::find($id);
     	$this->validate($request,
     		[
-    			'Ten'=>'required|unique:LoaiNhac,Ten|min:3|max:100'
+    			'Ten'=>'required|unique:CaSi,Ten|min:3|max:100'
     		],
     		[
     			'Ten.required'=>'Bạn chưa nhập loại nhạc',
@@ -37,14 +37,14 @@ class LoaiNhacController extends Controller
     			'Ten.min'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     			'Ten.max'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     		]);
-    	$loainhac->Ten = $request->Ten;
-    	$loainhac->save();
-    	return redirect('admin/loainhac/sua/'.$id)->with('thongbao','Sửa Thành Công');
+    	$casi->Ten = $request->Ten;
+    	$casi->save();
+    	return redirect('admin/casi/sua/'.$id)->with('thongbao','Sửa Thành Công');
     }
 
     public function getThem()
     {
-    	return view('admin.loainhac.them');
+    	return view('admin.casi.them');
     }
 
     public function postThem(Request $request)
@@ -59,18 +59,18 @@ class LoaiNhacController extends Controller
     			'Ten.max'=>'Tên loại nhạc phải có từ 3 đến 100 kí tự',
     		]);
 
-    	$loainhac = new LoaiNhac;
-    	$loainhac->Ten = $request->Ten;
-    	$loainhac->save();
+    	$casi = new CaSi;
+    	$casi->Ten = $request->Ten;
+    	$casi->save();
 
-    	return redirect('admin/loainhac/them')->with('thongbao','Đã Thêm Thành Công');
+    	return redirect('admin/casi/them')->with('thongbao','Đã Thêm Thành Công');
     }
 
     public function getXoa($id)
     {
-    	$loainhac = LoaiNhac::find($id);
-    	$loainhac->delete();
+    	$casi = CaSi::find($id);
+    	$casi->delete();
 
-    	return redirect('admin/loainhac/danhsach')->with('thongbao','Đã Xóa Thành Công');
+    	return redirect('admin/casi/danhsach')->with('thongbao','Đã Xóa Thành Công');
     }
 }

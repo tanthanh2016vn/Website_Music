@@ -5,13 +5,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>Add</small>
+                        <h1 class="page-header">Bài Hát
+                            <small>Thêm</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
-                        <form action="" method="POST">
+                        <form action="admin/baihat/them" method="POST">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}" />
                             <div class="form-group">
                                 <label>Category Parent</label>
                                 <select class="form-control">
@@ -20,8 +21,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Category Name</label>
-                                <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" />
+                                <label>Tên Bài Hát</label>
+                                <input class="form-control" name="txtCateName" placeholder="Nhập tên bài hát" />
                             </div>
                             <div class="form-group">
                                 <label>Category Order</label>
